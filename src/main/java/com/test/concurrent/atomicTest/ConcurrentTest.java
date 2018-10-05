@@ -18,7 +18,7 @@ public class ConcurrentTest extends ConcurrentTemplate {
     public volatile int count = 0;
 
     @Override
-    public void doHandle() {
+    public void doHandle(int num) {
         count++;
     }
 

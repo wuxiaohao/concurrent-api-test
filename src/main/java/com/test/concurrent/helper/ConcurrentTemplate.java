@@ -45,10 +45,11 @@ public abstract class ConcurrentTemplate {
         log.info("beginTime = {}", beginTime);
 
         for (int i = 0; i < clientTotal ; i++) {
+            int count = i;
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();
-                    doHandle();
+                    doHandle(count);
                     semaphore.release();
                 } catch (Exception e) {
                     log.error("执行业务异常", e);
@@ -69,7 +70,7 @@ public abstract class ConcurrentTemplate {
     /**
      * 核心并发业务
      */
-    public abstract void doHandle();
+    public abstract void doHandle(int count);
 
     /**
      * 并发后处理

@@ -24,7 +24,7 @@ public class CopyOnWriteArrayListTest extends ConcurrentTemplate {
 
 
     @Override
-    public void doHandle() {
+    public void doHandle(int count) {
 
         list.add(1);
 

@@ -29,7 +29,7 @@ public class AtomicBooleanTest extends ConcurrentTemplate {
     }
 
     @Override
-    public void doHandle() {
+    public void doHandle(int count) {
         if (isTrue.compareAndSet(false, true)) {
             log.info("isTrue = {}", isTrue.get());
         }

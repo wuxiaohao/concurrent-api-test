@@ -13,16 +13,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 public class AtomicIntegerTest extends ConcurrentTemplate  {
 
-    AtomicInteger count = new AtomicInteger(0);
+    AtomicInteger num = new AtomicInteger(0);
 
     @Override
-    public void doHandle() {
-        count.incrementAndGet();
+    public void doHandle(int count) {
+        num.incrementAndGet();
     }
 
     @Override
     public void doAfter() {
-        log.info("count = {}", count.get());
+        log.info("count = {}", num.get());
     }
 
     public static void main(String[] args) {
