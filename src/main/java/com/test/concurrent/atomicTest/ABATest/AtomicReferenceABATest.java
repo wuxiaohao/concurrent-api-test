@@ -21,9 +21,10 @@ public class AtomicReferenceABATest {
 
         Thread t1 = new Thread(() -> {
 
-            int stamp = VALUE.getStamp();
-            if (VALUE.compareAndSet("A","B", stamp, stamp + 1)) {
-                log.info("线程{},将VALUE改为:{},此时版本号为:{}",Thread.currentThread(), VALUE.getReference(),stamp);
+            int stamp = 0;
+            if (VALUE.compareAndSet("A","B", VALUE.getStamp(), VALUE.getStamp() + 1)) {
+                stamp = VALUE.getStamp();
+                log.info("线程{},将VALUE改为:{},此时版本号为:{}",Thread.currentThread(), VALUE.getReference(),VALUE.getStamp());
             }
 
             try {
@@ -34,7 +35,8 @@ public class AtomicReferenceABATest {
 
             if ("B".equals(VALUE.getReference())) {
                 if (stamp == VALUE.getStamp()) {
-                    log.info("线程{},再次取到value = {},没发生ABA问题",Thread.currentThread());
+                    log.info("线程{},再次取到value = {},没发生ABA问题，最初版本号={},此时版本号={}"
+                            ,Thread.currentThread() ,VALUE.getReference() ,stamp ,VALUE.getStamp());
                 } else {
                     log.info("线程{},再次取到value = {},发生了ABA问题，最初版本号={},此时版本号={}"
                             ,Thread.currentThread() ,VALUE.getReference() ,stamp ,VALUE.getStamp());
