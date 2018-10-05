@@ -1,7 +1,6 @@
 package com.test.concurrent.atomicTest;
 
 import com.test.concurrent.dto.UserDto;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
@@ -12,7 +11,7 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
  * AtomicIntegerFieldUpdater 可以保证对象的某一个field的原子性
  *
  * 测试结果：
- *  注意AtomicIntegerFieldUpdater要求对象的field 必须是非static、 需要申明为 public volatile 如：
+ *  注意AtomicIntegerFieldUpdater要求对象的field 必须是非static、 需要声明为 public volatile 如：
  *  public volatile int age;
  *
  * @author wxh
