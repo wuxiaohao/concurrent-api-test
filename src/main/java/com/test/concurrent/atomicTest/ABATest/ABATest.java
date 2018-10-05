@@ -31,7 +31,10 @@ public class ABATest {
                 e.printStackTrace();
             }
 
-            log.info("线程{},再次取到value = {}",Thread.currentThread(), VALUE.get());
+            if ("B".equals(VALUE.get())) {
+                log.info("线程{},再次取到value = {}",Thread.currentThread(), VALUE.get());
+            }
+
 
             countDownLatch.countDown();
 
