@@ -18,12 +18,12 @@ public abstract class ConcurrentTemplate {
     /**
      * 并发请求总数
      */
-    public static int clientTotal = 10000;
+    public static int clientTotal = 1000;
 
     /**
      * 同时并发执行线程数
      */
-    public static int threadTotal = 500;
+    public static int threadTotal = 100;
 
 
     public void doConcurrentRun() throws Exception{

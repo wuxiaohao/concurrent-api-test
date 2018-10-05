@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ConcurrentTestController {
 
 
-    @RequestMapping("/test")
+    @RequestMapping("/hello")
     @ResponseBody
-    public String test() {
-        log.info("test");
-        return "test";
+    public String hello() {
+        log.info("hello world");
+        return "hello world";
     }
 
 
